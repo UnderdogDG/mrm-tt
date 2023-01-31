@@ -5,7 +5,7 @@ import { AppContext } from "../context/MainContext";
 
 function Form(){
 
-    const { setState } = useContext( AppContext );
+    const { state, setState } = useContext( AppContext );
 
     const inputRef = useRef(null);
 
@@ -16,6 +16,13 @@ function Form(){
         }
     }
 
+    const requireIp = ()=>{
+        setState(prev=>prev.searchListIp());
+        setTimeout(()=>{
+            inputRef.current.value = state.ip;
+        }, 500)
+    }
+
     return(
 
         <FormContainer>
@@ -23,7 +30,7 @@ function Form(){
                 
                 <StyledInput ref={inputRef} type={"text"} onChange={ (e)=>filterInput(e) }/>
 
-                <StyledButton>
+                <StyledButton onClick={()=>requireIp()}>
                     Generar
                 </StyledButton>
             </StyledField>
@@ -44,6 +51,7 @@ const FormContainer = styled.div`
 const StyledField = styled.div`
     display: flex;
     width: 100%;
+    padding: 20px 0 0;
     max-width: 600px;
     justify-content: center;
     align-items: stretch;

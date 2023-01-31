@@ -5,6 +5,7 @@ import { GlobalStyle, theme } from './theme';
 
 import { AppProvider } from '../src/components/context/MainContext';
 import List from './components/List';
+import Header from './components/Title';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <GlobalStyle />
       <AppProvider>
         <MainContainer>
+          <Header title={ 'IP Generator' }/>
           <Form />
           <List />
         </MainContainer>

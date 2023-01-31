@@ -1,6 +1,6 @@
 const IpBuilder = require('../../utilities/IpBuilder');
 
-const ipBuilder = new IpBuilder()
+const ipBuilder = new IpBuilder();
 
 test('Test lenght > 12: 1234567891234', ()=>{
     

@@ -8,7 +8,7 @@ function List(){
 
     const { state } = useContext(AppContext);
 
-    const transitionElements = useTransition(state.listIp, item => item, {
+    /* const transitionElements = useTransition(state.listIp, item => item, {
         config:{ duration: 300 },
         from:{ paddingLeft: '105%', opacity: 0, height: '100px' },
         enter: { paddingLeft: '0%', opacity: 1 },
@@ -16,11 +16,11 @@ function List(){
           { paddingLeft: '105%', opacity: 0 },
           { height: '0px' }
         ]
-      });
+      }); */
 
     return(
         <StyledListContainer>
-            {
+            {/* {
                 transitionElements.map(({ item, props, key })=>{
                     return(
                         (transitionElements.length > 0)
@@ -31,7 +31,8 @@ function List(){
                     )
 
                 })
-            }
+            } */}
+            <StyledListItem />
 
         </StyledListContainer>
 

@@ -6,6 +6,11 @@ export const theme = {
         secondary: '',
     },
 
+    header:{
+        size: '30px',
+        weight: '600'
+    },
+
     container: {
         color: '#fffde7'
     },
