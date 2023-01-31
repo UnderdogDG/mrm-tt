@@ -1,8 +1,14 @@
 class IPBuilder{
-    constructor(str){
-        this.str = str.trim().toString().match(/\D/g) ? '' : str.trim();
+    constructor(){
+        this.str = '';
         this.ipCollection = [];
         this.ipJoined = [];
+    }
+
+    setString(str){
+        let prev = str.trim().toString();
+        this.str = !prev.match(/\D/g) && (prev.length <= 12) ? prev : '';
+        return this;
     }
 
     validate(str){
@@ -28,13 +34,15 @@ class IPBuilder{
 
         }
 
+        return this;
+
     }
 
     build(){
-        if(this.ipCollection.length == 0){
-            this.makeGroups(this.str);
-            this.ipJoined = this.ipCollection.map(e=>e.join('.'));
-        }
+        this.ipCollection = [];
+        this.makeGroups(this.str);
+        this.ipJoined = this.ipCollection.map(e=>e.join('.'));
+
         return this.ipJoined;
     }
 }
