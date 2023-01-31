@@ -1,5 +1,6 @@
 import { useContext, useRef } from "react";
 import styled from "styled-components";
+import AjaxRequest from "../../utils/AjaxRequest";
 
 import { AppContext } from "../context/MainContext";
 
@@ -16,8 +17,11 @@ function Form(){
         }
     }
 
-    const requireIp = ()=>{
-        setState(prev=>prev.searchListIp());
+    const requireIp = async()=>{
+        let ajaxRequest = new AjaxRequest();
+        let res = await ajaxRequest.IpCollectionRequest(inputRef.current.value.trim());
+        console.log(res);
+        setState(prev=>prev.setListIp(JSON.parse(res.response.collection)));
         setTimeout(()=>{
             inputRef.current.value = state.ip;
         }, 500)

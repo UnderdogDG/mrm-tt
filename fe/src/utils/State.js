@@ -10,7 +10,8 @@ class State{
         return this.updateState();
     }
 
-    searchListIp(){
+    setListIp(arr){
+        this.listIp = [...arr];
         this.ip = '';
         return this.updateState();
     }
