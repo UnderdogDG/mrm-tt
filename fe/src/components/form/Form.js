@@ -20,7 +20,6 @@ function Form(){
     const requireIp = async()=>{
         let ajaxRequest = new AjaxRequest();
         let res = await ajaxRequest.IpCollectionRequest(inputRef.current.value.trim());
-        console.log(res);
         setState(prev=>prev.setListIp(JSON.parse(res.response.collection)));
         setTimeout(()=>{
             inputRef.current.value = state.ip;

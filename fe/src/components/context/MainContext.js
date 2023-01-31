@@ -8,7 +8,6 @@ const AppProvider = ({ children })=>{
 
   return(
     <AppContext.Provider value={ {state, setState} }>
-      { console.log(state) }
       { children }
     </AppContext.Provider>
   )
