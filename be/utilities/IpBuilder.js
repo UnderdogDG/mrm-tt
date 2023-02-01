@@ -1,4 +1,4 @@
-class IPBuilder{
+class IpBuilder{
     constructor(){
         this.str = '';
         this.ipCollection = [];
@@ -47,4 +47,4 @@ class IPBuilder{
     }
 }
 
-module.exports = IPBuilder;
+module.exports = IpBuilder;

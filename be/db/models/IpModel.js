@@ -1,13 +1,21 @@
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-const ipSchema = new mongoose.Schema(
+const IpSchema = new Schema(
     {
-        chain: String,
-        collection: [String]   
+        chain: {
+            type: String,
+            required: true
+        },
+        collection: {
+            type: [String],
+            required: true
+        }
     }
 )
 
-const ipCollection = mongoose.model('IP', ipSchema);
+const IpCollection = model('IpCollection', IpSchema);
+
+model.exports = IpCollection;
 
 async function saveCollection(chain, collection){
 

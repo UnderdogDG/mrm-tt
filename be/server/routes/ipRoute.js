@@ -1,21 +1,11 @@
 const router = require('express').Router();
-const IpBuilder = require('../../utilities/IpBuilder');
 
-router.route('/')
-    .post((req, res)=>{
-        
-        let ip = req.query.ip;
-        
-        let ipCollection = new IpBuilder().setString(ip).build();
+const { postApiGeneratorController, getApiGeneratorController } = require('../controllers/ipController');
 
-        console.log(ipCollection)
-        res.send({
-            status: 400,
-            response: { 
-                collection: JSON.stringify(ipCollection)
-            }
-        })
-    }
-);
+
+
+router.route('/ip-generator')
+    .get( getApiGeneratorController )
+    .post( postApiGeneratorController );
 
 module.exports = router;
