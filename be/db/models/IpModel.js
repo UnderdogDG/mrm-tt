@@ -1,23 +1,23 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require("mongoose");
 
-const IpSchema = new Schema(
+const ipSchema = new mongoose.Schema(
     {
-        chain: {
+        ip: {
             type: String,
             required: true
         },
-        collection: {
-            type: [String],
+        group: {
+            type: Array,
             required: true
         }
     }
 )
 
-const IpCollection = model('IpCollection', IpSchema);
+const IpCollection = mongoose.model('IpCollection', ipSchema);
 
-model.exports = IpCollection;
+module.exports = IpCollection;
 
-async function saveCollection(chain, collection){
+/* async function saveCollection(chain, collection){
 
     const ipList = new ipCollection({chain, collection});
 
@@ -30,4 +30,4 @@ async function findCollection(chain){
     const collection = await ipCollection.find({ ip: chain })
 
     console.log(collection);
-}
+} */

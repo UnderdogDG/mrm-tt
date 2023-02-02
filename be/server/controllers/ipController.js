@@ -1,5 +1,7 @@
 const IpBuilder = require('../../utilities/IpBuilder');
 
+const IpCollection = require('../../db/models/IpModel');
+
 const ipBuilder = new IpBuilder()
 
 //@description  IP Controller
@@ -33,13 +35,49 @@ exports.getApiGeneratorController = (req, res)=>{
 //@route        /ip-generator
 //@access       Public
 
-exports.postApiGeneratorController = (req, res)=>{
-    let ip = JSON.stringify(req.body);
+exports.postApiGeneratorController = async (req, res)=>{
 
-    console.log(ip);
+    console.log(req.body);
 
-    res.status(201).json({
-        status: "success",
-        collection: []
-    })
+    const { ip } = req.body;
+    let { group } = await IpCollection.findOne({ ip }) || { group: null };
+
+    console.log("find:", group)
+
+    try{
+        if( group ){
+            res.json({
+                status: "success",
+                ip,
+                group
+            })
+        }
+        else{
+        
+            let group = ipBuilder.setString(ip).build();
+
+            console.log("created:", ip, group);
+
+
+            await IpCollection.create({
+                ip,
+                group
+            });
+
+            res.json({
+                status: "success",
+                ip,
+                group
+            });
+        };
+    }
+    catch(e){
+        console.log("fail..." + ip);
+        res.json({
+            status: "fail",
+            ip,
+            group: [],
+            msg: e
+        });
+    }
 };

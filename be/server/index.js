@@ -8,6 +8,7 @@ const ipRoute = require('./routes/ipRoute');
 const app = express();
 
 app.use(cors());
+app.use(express.json()); //utility for parsing the body
 
 
 app.use('/', home);

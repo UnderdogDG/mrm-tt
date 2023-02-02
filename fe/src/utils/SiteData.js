@@ -12,10 +12,17 @@ class SiteData{
     return headers;
   }
 
+  postIpCollection(){
+    let url = this.siteURL + this.endPoints.IP_COLLECTION_POST.URI
+    let headers = this.getHeader();
+    let method = this.endPoints.IP_COLLECTION_POST.METHOD
+    return { url, headers, method };
+  }
+
   getIpCollection(){
-    let url = this.siteURL + this.endPoints.IP_COLLECTION.URI
+    let url = this.siteURL + this.endPoints.IP_COLLECTION_GET.URI
     let header = this.getHeader();
-    let method = this.endPoints.IP_COLLECTION.METHOD
+    let method = this.endPoints.IP_COLLECTION_GET.METHOD
     return { url, header, method };
   }
 };
